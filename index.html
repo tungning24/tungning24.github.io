@@ -1,0 +1,25 @@
+<div id="apps"></div>
+
+<script>
+async function loadApps(){
+
+    const res = await fetch('projects.json');
+    const projects = await res.json();
+
+    const apps = document.getElementById('apps');
+
+    projects.forEach(project=>{
+
+        apps.innerHTML += `
+        <a class="card" href="${project.url}">
+            <div>${project.icon}</div>
+            <div>${project.name}</div>
+        </a>
+        `;
+
+    });
+
+}
+
+loadApps();
+</script>
