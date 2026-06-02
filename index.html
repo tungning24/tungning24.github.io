@@ -1,25 +1,175 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Apps</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    min-height:100vh;
+    padding:16px;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.header h1{
+    font-size:28px;
+    color:#222;
+}
+
+.header p{
+    color:#666;
+    margin-top:5px;
+}
+
+.search-box{
+    margin-bottom:18px;
+}
+
+.search-box input{
+    width:100%;
+    border:none;
+    outline:none;
+    padding:14px;
+    border-radius:14px;
+    font-size:16px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+#apps{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+
+.card{
+    text-decoration:none;
+    color:#222;
+    background:#fff;
+    border-radius:20px;
+    padding:20px 12px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-2px);
+}
+
+.card:active{
+    transform:scale(.97);
+}
+
+.icon{
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.name{
+    font-size:15px;
+    font-weight:bold;
+}
+
+.footer{
+    text-align:center;
+    color:#999;
+    margin-top:25px;
+    font-size:13px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>📱 My Apps</h1>
+    <p>รวมโปรเจคทั้งหมด</p>
+</div>
+
+<div class="search-box">
+    <input
+        type="text"
+        id="search"
+        placeholder="ค้นหาโปรเจค..."
+    >
+</div>
+
 <div id="apps"></div>
 
+<div class="footer">
+    Powered by GitHub Pages
+</div>
+
 <script>
+
+let allProjects=[];
+
 async function loadApps(){
 
     const res = await fetch('projects.json');
-    const projects = await res.json();
 
-    const apps = document.getElementById('apps');
+    allProjects = await res.json();
+
+    renderApps(allProjects);
+
+}
+
+function renderApps(projects){
+
+    const apps=document.getElementById('apps');
+
+    apps.innerHTML='';
 
     projects.forEach(project=>{
 
         apps.innerHTML += `
-        <a class="card" href="${project.url}">
-            <div>${project.icon}</div>
-            <div>${project.name}</div>
-        </a>
+            <a class="card" href="${project.url}">
+                <div class="icon">${project.icon}</div>
+                <div class="name">${project.name}</div>
+            </a>
         `;
 
     });
 
 }
 
+document.getElementById('search')
+.addEventListener('input',function(){
+
+    const text=this.value.toLowerCase();
+
+    renderApps(
+
+        allProjects.filter(project=>
+
+            project.name
+            .toLowerCase()
+            .includes(text)
+
+        )
+
+    );
+
+});
+
 loadApps();
+
 </script>
+
+</body>
+</html>
