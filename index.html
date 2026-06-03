@@ -3,8 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
 
-<title>My Apps</title>
+<meta name="theme-color" content="#f4f6f9">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="icon" href="icon-192x192.png">
+<link rel="apple-touch-icon" href="icon-192x192.png">
+    
+<title>TungNing Apps</title>
 
 <style>
 
@@ -95,9 +104,24 @@ body{
 </style>
 </head>
 <body>
+<script>
 
+if ('serviceWorker' in navigator) {
+
+  window.addEventListener('load', () => {
+
+    navigator.serviceWorker
+      .register('./sw.js')
+      .then(() => console.log('SW Registered'))
+      .catch(err => console.log(err));
+
+  });
+
+}
+
+</script>
 <div class="header">
-    <h1>📱 My Apps</h1>
+    <h1>📱 TungNing Apps</h1>
     <p>รวมโปรเจคทั้งหมด</p>
 </div>
 
