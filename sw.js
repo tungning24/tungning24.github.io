@@ -3,7 +3,6 @@ const CACHE_NAME = "myapps-v1";
 const FILES = [
   "./",
   "./index.html",
-  "./projects.json",
   "./manifest.json",
   "./icon-192x192.png",
   "./icon-512x512.png"
