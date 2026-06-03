@@ -1,8 +1,8 @@
 {
   "name": "TungNing Apps",
   "short_name": "TungNing",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#f4f6f9",
   "theme_color": "#f4f6f9",
