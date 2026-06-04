@@ -1,9 +1,9 @@
 {
-  "id": "/",
+  "id": "/tungning24.github.io/",
   "name": "TungNing Apps",
   "short_name": "TungNing",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/tungning24.github.io/",
+  "scope": "/tungning24.github.io/",
   "display": "standalone",
   "background_color": "#f4f6f9",
   "theme_color": "#f4f6f9",
